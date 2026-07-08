@@ -6,16 +6,31 @@ class EstrategiaProxima:
         if len(bolas) == 0:
             return WIDTH // 2
 
-        menor = 999999
-        alvo = None
+        melhor_bola = None
+        melhor_score = 999999999
+
+        centro = jogador.x + jogador.largura / 2
 
         for bola in bolas:
-            distancia = abs(bola.x - (jogador.x + jogador.largura/2))
+            # Ignora bolas subindo
+            if bola.vy <= 0:
+                continue
 
-            if distancia < menor:
-                menor = distancia
-                alvo = bola
+            tempo = (jogador.y - bola.y) / bola.vy
+
+            if tempo < 0:
+                continue
+
+            distancia = abs(bola.x - centro)
+
+            score = distancia + tempo * 40
+
+            if score < melhor_score:
+                melhor_score = score
+                melhor_bola = bola
+
+        if melhor_bola == None:
+            return WIDTH // 2
         
-        # O uso de self era o que fazia a plataforma seguir/lock on uma bolinha, então o removi pra seguir um workflow parecido com o da outra estratégia, 
         # mudei para esse diferente pois ele tenta ir um pouco mais a frente da trajetória da bolinha pra ficar mais cleann
-        return alvo.x + alvo.vx * 8
+        return melhor_bola.x + melhor_bola.vx * 6

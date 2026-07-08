@@ -115,6 +115,7 @@ def update():
 
     # IA escolhe para onde mover
     alvo = ia2.escolher_alvo(bolas, jogador, esquerda_count, direita_count)
+    # alvo = ia1.escolher_alvo(bolas, jogador)
 
     jogador.mover_para(alvo)
     jogador.update()
