@@ -1,5 +1,5 @@
 # IFC Campus Blumenau - Projeto POO II - BCC 3° Fase
-![IFC Campus Blumenau](https://cecom.ifc.edu.br/wp-content/uploads/sites/10/2022/10/Logo_IFC_extendida_Blumenau.png)
+![IFC Campus Blumenau](IFC.png)
 
 ## Comparação de Estratégias Autônomas sobre a Captura de Bolas
 Este projeto foi feito na linguagem **Python** utilizando as bibliotecas **pygame**, **pygame-ce** e **pygame zero**. Seu objetivo é testar 2 Estratégias: Uma no qual foca em 'capturar' a bolinha mais perto da plataforma IA, e outra que o objetivo é ficar no lado em que mais tem bolinhas e ai tentar capturar a mais perto.
