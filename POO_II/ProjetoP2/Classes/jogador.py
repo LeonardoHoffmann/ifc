@@ -9,7 +9,7 @@ class Jogador:
         self.x = x
         self.y = y
 
-        self.velocidade = 16
+        self.velocidade = 8
         self.alvo_x = self.x
 
         self.largura = LARGURA
@@ -24,14 +24,17 @@ class Jogador:
         self.alvo_x = x
 
     def update(self):
-
         centro = self.x + self.largura / 2
+        erro = self.alvo_x - centro
 
-        if centro < self.alvo_x:
-            self.x += self.velocidade
-
-        elif centro > self.alvo_x:
-            self.x -= self.velocidade
+        if abs(erro) > 5:
+            if abs(erro) < self.velocidade:
+                self.x += erro
+            else:
+                if erro > 0:
+                    self.x += self.velocidade
+                else:
+                    self.x -= self.velocidade
 
         if self.x < 0:
             self.x = 0

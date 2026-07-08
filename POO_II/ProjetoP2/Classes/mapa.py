@@ -1,4 +1,4 @@
-from bloco import Bloco
+from Classes.bloco import Bloco
 
 def mapa1(blocos):
     # Esquerda

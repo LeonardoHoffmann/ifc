@@ -1,21 +1,25 @@
 from config import WIDTH
 
 class EstrategiaProxima:
+    def __init__(self):
+        self.alvo = None
 
     def escolher_alvo(self, bolas, jogador):
-        if len(bolas) == 0:
-            return WIDTH / 2
+        if self.alvo not in bolas:
+            self.alvo = None
 
-        menor_distancia = 999999
+        if self.alvo == None:
+            menor = 999999
 
-        alvo = jogador.x
-        centro = jogador.x + jogador.largura / 2
+            for bola in bolas:
+                distancia = abs(bola.x - (jogador.x + jogador.largura/2))
 
-        for bola in bolas:
-            distancia = abs(bola.x - centro)
+                if distancia < menor:
+                    menor = distancia
+                    self.alvo = bola
 
-            if distancia < menor_distancia:
-                menor_distancia = distancia
-                alvo = bola.x
-
-        return alvo
+        if self.alvo == None:
+            return WIDTH // 2
+        
+        # Antes era só return self.alvo.x, mudei para esse diferente pois ele tenta ir um pouco mais a frente da trajetória da bolinha pra ficar mais cleann
+        return self.alvo.x + self.alvo.vx * 8

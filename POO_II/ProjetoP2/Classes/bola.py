@@ -1,6 +1,6 @@
 import random
 from config import *
-from bloco import Bloco
+from Classes.bloco import Bloco
 from pygame import Rect
 
 class Bola:

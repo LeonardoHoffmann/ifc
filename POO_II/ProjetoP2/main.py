@@ -1,14 +1,14 @@
 import random
 import math
 from config import *
-from bola import Bola
-from bloco import Bloco
+from Classes.bola import Bola
+from Classes.bloco import Bloco
+from Classes.mapa import mapa1
+from Classes.jogador import Jogador
 from pygame import mouse
 from pygame import image
 from pygame import transform
-from jogador import Jogador
 from estrategia_proxima import EstrategiaProxima
-from mapa import mapa1
 import pgzrun
 
 CENTRO = 600
@@ -75,18 +75,18 @@ def colisoes_bolas():
                     bola_b.x += nx * sobreposicao / 2
                     bola_b.y += ny * sobreposicao / 2
 
-bg_image = image.load("based.png").convert()
+bg_image = image.load("Texturas/based.png").convert()
 bg_image = transform.scale(bg_image, (WIDTH, HEIGHT))
 
-center_1 = image.load("losangulo.png").convert_alpha()
+center_1 = image.load("Texturas/losangulo.png").convert_alpha()
 center_rect1 = center_1.get_rect()
 center_rect1.center = (610, 470)
 
-center_2 = image.load("losangulo.png").convert_alpha()
+center_2 = image.load("Texturas/losangulo.png").convert_alpha()
 center_rect2 = center_2.get_rect()
 center_rect2.center = (0, 290)
 
-center_3 = image.load("losangulo.png").convert_alpha()
+center_3 = image.load("Texturas/losangulo.png").convert_alpha()
 center_rect3 = center_3.get_rect()
 center_rect3.center = (1200, 290)
 
@@ -97,23 +97,30 @@ def update():
     esquerda_count = 0
     direita_count = 0
 
-    alvo = ia.escolher_alvo(bolas,jogador)
-    
-    jogador.mover_para(alvo)
-    jogador.update()
+    # Atualiza todas as bolas
+    for bola in bolas:
+        bola.update()
+        bola.colidir_blocos(blocos)
 
+    colisoes_bolas()
+
+    # Conta quantas bolas existem em cada lado
     for bola in bolas:
         if bola.x < CENTRO:
             esquerda_count += 1
         else:
             direita_count += 1
 
-    for bola in bolas[:]:
+    # IA escolhe para onde mover
+    alvo = ia.escolher_alvo(bolas, jogador)
 
-        bola.update()
-        bola.colidir_blocos(blocos)
+    jogador.mover_para(alvo)
+    jogador.update()
 
-        if jogador.rect.collidepoint(bola.x,bola.y + bola.raio):
+    # Verifica bolas capturadas ou perdidas
+    for bola in bolas[:]: # [:] feito para o for ler uma cópia sem ter mudanças para ai sim mudar na lista real
+
+        if jogador.rect.colliderect(bola.rect):
             bolas.remove(bola)
             capturadas += 1
             continue
@@ -121,8 +128,6 @@ def update():
         if bola.y - bola.raio > HEIGHT:
             bolas.remove(bola)
             perdidas += 1
-
-    colisoes_bolas()
 
 def draw():
     screen.clear()
