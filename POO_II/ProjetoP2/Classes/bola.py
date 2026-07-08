@@ -2,6 +2,10 @@ import random
 from config import *
 from Classes.bloco import Bloco
 from pygame import Rect
+import pygame
+
+pygame.mixer.init()
+som_boing = pygame.mixer.Sound("SFX/Boing.wav")
 
 class Bola:
     def __init__(self, x, y):
@@ -51,6 +55,8 @@ class Bola:
                 self.vx -= 2 * dot * nx
                 self.vy -= 2 * dot * ny
 
+                som_boing.play()
+
     def update(self):
         # Gravidade
         self.vy += GRAVITY
@@ -67,11 +73,13 @@ class Bola:
         if self.x - self.raio <= 0:
             self.x = self.raio
             self.vx *= -BOUNCE
+            som_boing.play()
 
         # Parede direita
         if self.x + self.raio >= WIDTH:
             self.x = WIDTH - self.raio
             self.vx *= -BOUNCE
+            som_boing.play()
         
         # Hitbox update
         self.rect.x = self.x - self.raio
