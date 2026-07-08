@@ -9,6 +9,7 @@ from pygame import mouse
 from pygame import image
 from pygame import transform
 from estrategia_proxima import EstrategiaProxima
+from estrategia_quantia import EstrategiaQuantia
 import pgzrun
 
 CENTRO = 600
@@ -35,7 +36,8 @@ jogador = Jogador(
     HEIGHT - 30
 )
 
-ia = EstrategiaProxima()
+# ia1 = EstrategiaProxima()
+ia2 = EstrategiaQuantia()
 
 # Mapa
 mapa1(blocos)
@@ -112,7 +114,7 @@ def update():
             direita_count += 1
 
     # IA escolhe para onde mover
-    alvo = ia.escolher_alvo(bolas, jogador)
+    alvo = ia2.escolher_alvo(bolas, jogador, esquerda_count, direita_count)
 
     jogador.mover_para(alvo)
     jogador.update()
