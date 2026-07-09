@@ -15,7 +15,7 @@ Como isto é uma *Simulação*, sendo seu objetivo principal logo testar tais m�
 ## Instruções em como executar o programa:
 Como o programa foi feito utilizando bibliotecas, elas devem ser baixadas, sendo elas **pygame, pygame-ce e pygame zero**. Abaixo há os comandos no qual terá que se usar no Terminal para baixar todos os 3:
 
-1. **Pygame:** ```pip install pygame``` (a versão do pygame normal quando eu fui fazer o jogo não funcionava, então se não funcionar, instale a Community Edition de pygame abaixo.)
+1. **Pygame:** ```pip install pygame``` (a versão do pygame normal quando eu fui fazer a simulação não funcionava, então se não funcionar, instale a Community Edition de pygame abaixo.)
 2. **Pygame-ce:** ```pip install pygame-ce```
 3. **Pygame Zero:** ```pip install numpy pyfxr``` ( <-- *dependências*), ```pip install pgzero``` (adicione *--no-deps* antes de *pgzero* caso não queira forçar a instalação do pygame antigo, permitindo assim que se o pygame normal não funcionar, que rode por cima do pygame-ce sem reinstalar algo.)
 
@@ -24,5 +24,8 @@ Após isso, para baixar o programa, baixe-o neste repositório ou dê **git pull
 ![Imagem de como baixar no github ou dando pull.](https://helpdeskgeek.com/wp-content/pictures/2021/06/11CodeButtonDownloadZip.png)
 
 Para Rodar o programa, você precisa abrir ele em um editor de código como VSCode ou até mesmo no Terminal e rodar a função *main.py* , Agora algo para ficar atento é, se o programa der **ERRO** ao rodar, é por que você não iniciou ele pela pasta que contém tudo, então se certifique que no Terminal mostre esse diretório: ```X:..\POO_II\ProjetoP2```
+
+#### Link do Vídeo demonstrando o programa funcionando: https://www.youtube.com/watch?v=PwKQYRfJjos
+###### Para ver as Legendas, ative as Legendas (Subtitles) do YouTube e selecione a opção Português (BR) !!!
 
 ### - Leonardo Hoffmann
