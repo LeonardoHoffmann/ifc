@@ -300,6 +300,9 @@ def draw():
         screen.draw.text(f"Esquerda: {esquerda_count}", (WIDTH - 220, 20), color="white")
         screen.draw.text(f"Direita: {direita_count}", (WIDTH - 90, 20), color="white")
 
+        screen.draw.text(f"{nome_estrategia}",(WIDTH - 220, 55),color="cyan")
+        screen.draw.text(f"Simulação: {simulacao_atual} / 2",(WIDTH - 220, 80),color="white")
+
 # Desativado para a Simulação, da pra ativar se quiser "debugar"..
 # def on_mouse_down(pos, button):
 #     if button == mouse.LEFT:
